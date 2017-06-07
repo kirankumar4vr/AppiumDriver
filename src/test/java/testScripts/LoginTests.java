@@ -21,17 +21,25 @@ public class LoginTests {
 			
   @Test
   public void login() {
-	  loginPage.Login("temsec12grd06", "psocsq3");
+	  try{
+		  loginPage.Login("temsec12grd06", "psocsq3");
+	  }catch(Exception ex){
+		  
+	  }
   }
 
   @BeforeTest
   public void beforeTest() {
-	  agent = new AutomationAgent(OS);
-	  if(OS=="windows"){
-		  loginPage = new WinLoginPage(agent);
-	  }
-	  else if(OS=="iOS"){
-		  loginPage = new IOSLoginPage(agent);
+	  try{
+		  agent = new AutomationAgent(OS);
+		  if(OS=="windows"){
+			  loginPage = new WinLoginPage(agent);
+		  }
+		  else if(OS=="iOS"){
+			  loginPage = new IOSLoginPage(agent);
+		  }
+	  }catch(Exception ex){
+		  
 	  }
   }
 
