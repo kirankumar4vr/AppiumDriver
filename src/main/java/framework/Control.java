@@ -11,12 +11,14 @@ public class Control {
 public String controlName;
 public String controlText;
 public ControlType controlType;
-private By mobileBy;
-private MobileElement mobileElement;
+public MobileBy mobileBy;
+public MobileElement mobileElement;
 public MobileByType mobileByType;
 public String controlIdentifier;
+public AutomationAgent agent;
 
-public Control(String controlName, String controlText, ControlType controlType, MobileByType mobileByType, String controlIdentifier){
+public Control(AutomationAgent agent, String controlName, String controlText, ControlType controlType, MobileByType mobileByType, String controlIdentifier){
+	this.agent = agent;
 	this.controlName = controlName;
 	this.controlText = controlText;
 	this.controlType = controlType;
@@ -24,30 +26,30 @@ public Control(String controlName, String controlText, ControlType controlType, 
 	this.controlIdentifier = controlIdentifier;
 	switch (mobileByType){
 	case AccessibilityId :
-		mobileBy = MobileBy.AccessibilityId(controlIdentifier);
+		mobileBy = (MobileBy) MobileBy.AccessibilityId(controlIdentifier);
 		break;
 	case Name :
-		mobileBy = MobileBy.name(controlIdentifier);
+		mobileBy = (MobileBy) MobileBy.name(controlIdentifier);
 		break;
 	case ClassName :
-		mobileBy = MobileBy.className(controlIdentifier);
+		mobileBy = (MobileBy) MobileBy.className(controlIdentifier);
 		break;
 	case Xpath :
-		mobileBy = MobileBy.xpath(controlIdentifier);
+		mobileBy = (MobileBy) MobileBy.xpath(controlIdentifier);
 		break;
 	case LinkText :
-		mobileBy = MobileBy.linkText(controlIdentifier);
+		mobileBy = (MobileBy) MobileBy.linkText(controlIdentifier);
 		break;
 	case Id :
-		mobileBy = MobileBy.id(controlIdentifier);
+		mobileBy = (MobileBy) MobileBy.id(controlIdentifier);
 		break;
 	}
 }
-
-public MobileElement getMobileElement(AppiumDriver driver){
-	if(mobileElement ==null){
-		this.mobileElement = (MobileElement) driver.findElement(mobileBy);
+public MobileElement getMobileElement(){
+	if(this.mobileElement==null){
+		mobileElement = (MobileElement) this.agent.getMobileElement(this);
 	}
-	return this.mobileElement;
+	return mobileElement;
 }
+
 }
