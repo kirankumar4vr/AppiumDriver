@@ -31,17 +31,27 @@ public class AutomationAgent {
 	}
 	public void click(Control control){
 		//this.driver.findElement(control.mobileBy).click();
-		control.getMobileElement().click();
+		try {
+			control.getMobileElement(this).click();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void sendText(Control control, String text){
 		//this.driver.findElement(control.mobileBy).clear();
 //		this.driver.findElement(control.mobileBy).sendKeys(text);
-		control.getMobileElement().clear();
-		control.getMobileElement().sendKeys(text);
+		try {
+			control.getMobileElement(this).clear();
+			control.getMobileElement(this).sendKeys(text);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 	
 	public MobileElement getMobileElement(Control control){
-		return this.driver.findElementByAccessibilityId(control.controlIdentifier);	
+		return this.driver.findElement(control.mobileBy);	
 	}
 }

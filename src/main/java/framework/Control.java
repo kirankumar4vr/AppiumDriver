@@ -15,10 +15,8 @@ public MobileBy mobileBy;
 public MobileElement mobileElement;
 public MobileByType mobileByType;
 public String controlIdentifier;
-public AutomationAgent agent;
 
-public Control(AutomationAgent agent, String controlName, String controlText, ControlType controlType, MobileByType mobileByType, String controlIdentifier){
-	this.agent = agent;
+public Control(String controlName, String controlText, ControlType controlType, MobileByType mobileByType, String controlIdentifier){
 	this.controlName = controlName;
 	this.controlText = controlText;
 	this.controlType = controlType;
@@ -45,9 +43,9 @@ public Control(AutomationAgent agent, String controlName, String controlText, Co
 		break;
 	}
 }
-public MobileElement getMobileElement(){
+public MobileElement getMobileElement(AutomationAgent agent) throws Exception{
 	if(this.mobileElement==null){
-		mobileElement = (MobileElement) this.agent.getMobileElement(this);
+		mobileElement = (MobileElement) agent.getMobileElement(this);
 	}
 	return mobileElement;
 }

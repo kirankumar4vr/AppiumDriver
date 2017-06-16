@@ -1,2 +1,4 @@
-/testScripts/
 /framework/
+/abstractControlPages/
+/iOSControlPages/
+/winControlPages/
