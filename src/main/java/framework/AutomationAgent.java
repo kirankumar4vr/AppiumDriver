@@ -26,7 +26,14 @@ public class AutomationAgent {
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		}
 		else if (OS=="iOS"){
-			
+			capabilities = new DesiredCapabilities();
+			capabilities.setCapability("app", "/Users/admin/app/2.1.4.53-Developer-PoC-Parametrized.ipa");
+			capabilities.setCapability("platformName", "iOS");
+			capabilities.setCapability("platformVersion", "9.2.1");
+			capabilities.setCapability("deviceName", "iPad");
+			capabilities.setCapability("udid", "c07e63d2e71c653fdda10dfea9aec3998b6c7f40");			
+			driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4445/wd/hub"), capabilities);		
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		}
 	}
 	public void click(Control control){

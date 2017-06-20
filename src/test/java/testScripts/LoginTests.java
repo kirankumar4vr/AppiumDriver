@@ -16,7 +16,8 @@ import org.testng.annotations.AfterSuite;
 
 public class LoginTests {
 	public AutomationAgent agent;
-	public String OS = "Windows";
+	//public String OS = "Windows";
+	public String OS = "iOS";
 	public AbstractLoginpage loginPage;
 			
   @Test
@@ -37,7 +38,7 @@ public class LoginTests {
 			  loginPage = new IOSLoginPage(agent);
 		  }
 	  }catch(Exception ex){
-		  
+		  ex.printStackTrace();
 	  }
   }
 

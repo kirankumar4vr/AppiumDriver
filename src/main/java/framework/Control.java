@@ -2,7 +2,6 @@ package framework;
 
 import org.openqa.selenium.By;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 
@@ -11,7 +10,7 @@ public class Control {
 public String controlName;
 public String controlText;
 public ControlType controlType;
-public MobileBy mobileBy;
+public By mobileBy;
 public MobileElement mobileElement;
 public MobileByType mobileByType;
 public String controlIdentifier;
@@ -24,22 +23,22 @@ public Control(String controlName, String controlText, ControlType controlType, 
 	this.controlIdentifier = controlIdentifier;
 	switch (mobileByType){
 	case AccessibilityId :
-		mobileBy = (MobileBy) MobileBy.AccessibilityId(controlIdentifier);
+		mobileBy = MobileBy.AccessibilityId(controlIdentifier);
 		break;
 	case Name :
-		mobileBy = (MobileBy) MobileBy.name(controlIdentifier);
+		mobileBy = MobileBy.name(controlIdentifier);
 		break;
 	case ClassName :
-		mobileBy = (MobileBy) MobileBy.className(controlIdentifier);
+		mobileBy = MobileBy.className(controlIdentifier);
 		break;
 	case Xpath :
-		mobileBy = (MobileBy) MobileBy.xpath(controlIdentifier);
+		mobileBy = MobileBy.xpath(controlIdentifier);
 		break;
 	case LinkText :
-		mobileBy = (MobileBy) MobileBy.linkText(controlIdentifier);
+		mobileBy = MobileBy.linkText(controlIdentifier);
 		break;
 	case Id :
-		mobileBy = (MobileBy) MobileBy.id(controlIdentifier);
+		mobileBy = MobileBy.id(controlIdentifier);
 		break;
 	}
 }
