@@ -11,6 +11,35 @@ public class DynamicControl extends Control{
 		super(controlName, controlText,controlType,mobileByType,controlIdentifier);		
 	}
 	
+	public DynamicControl(String controlName, String controlText, ControlType controlType){
+		super(controlName, controlText,controlType);		
+	}
+	
+	public void setMobileByAndLocator(MobileByType mobileByType, String controlIdentifier){
+		this.mobileByType =mobileByType;
+		this.controlIdentifier = controlIdentifier;
+		switch (mobileByType){
+		case AccessibilityId :
+			mobileBy = MobileBy.AccessibilityId(controlIdentifier);
+			break;
+		case Name :
+			mobileBy = MobileBy.name(controlIdentifier);
+			break;
+		case ClassName :
+			mobileBy = MobileBy.className(controlIdentifier);
+			break;
+		case Xpath :
+			mobileBy = MobileBy.xpath(controlIdentifier);
+			break;
+		case LinkText :
+			mobileBy = MobileBy.linkText(controlIdentifier);
+			break;
+		case Id :
+			mobileBy = MobileBy.id(controlIdentifier);
+			break;
+		}
+	}
+	
 	public void setDynamicVariables(String[] dynamicVariables){
 		this.dynamicVariables = dynamicVariables;
 		for(int i=0; i<dynamicVariables.length; i++){

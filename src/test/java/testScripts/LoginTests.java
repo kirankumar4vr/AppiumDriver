@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import abstractControlPages.AbstractLoginpage;
 import framework.AutomationAgent;
 import iOSControlPages.IOSLoginPage;
+import iOSSTControlPages.STLoginPage;
 import winControlPages.WinLoginPage;
 
 import org.testng.annotations.BeforeClass;
@@ -17,7 +18,8 @@ import org.testng.annotations.AfterSuite;
 public class LoginTests {
 	public AutomationAgent agent;
 	//public String OS = "Windows";
-	public String OS = "iOS";
+	//public String OS = "iOS";
+	public String OS = "ST";
 	public AbstractLoginpage loginPage;
 			
   @Test
@@ -36,6 +38,9 @@ public class LoginTests {
 		  }
 		  else if(OS=="iOS"){
 			  loginPage = new IOSLoginPage(agent);
+		  }
+		  else if(OS=="ST"){
+			  loginPage = new STLoginPage(agent);
 		  }
 	  }catch(Exception ex){
 		  ex.printStackTrace();

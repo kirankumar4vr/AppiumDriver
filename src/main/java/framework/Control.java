@@ -42,6 +42,38 @@ public Control(String controlName, String controlText, ControlType controlType, 
 		break;
 	}
 }
+
+public Control(String controlName, String controlText, ControlType controlType){
+	this.controlName = controlName;
+	this.controlText = controlText;
+	this.controlType = controlType;	
+}
+
+public void setMobileByAndLocator(MobileByType mobileByType, String controlIdentifier){
+	this.mobileByType =mobileByType;
+	this.controlIdentifier = controlIdentifier;
+	switch (mobileByType){
+	case AccessibilityId :
+		mobileBy = MobileBy.AccessibilityId(controlIdentifier);
+		break;
+	case Name :
+		mobileBy = MobileBy.name(controlIdentifier);
+		break;
+	case ClassName :
+		mobileBy = MobileBy.className(controlIdentifier);
+		break;
+	case Xpath :
+		mobileBy = MobileBy.xpath(controlIdentifier);
+		break;
+	case LinkText :
+		mobileBy = MobileBy.linkText(controlIdentifier);
+		break;
+	case Id :
+		mobileBy = MobileBy.id(controlIdentifier);
+		break;
+	}
+}
+
 public MobileElement getMobileElement(AutomationAgent agent) throws Exception{
 	if(this.mobileElement==null){
 		mobileElement = (MobileElement) agent.getMobileElement(this);

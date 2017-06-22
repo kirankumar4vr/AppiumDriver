@@ -2,11 +2,12 @@ package abstractControlPages;
 
 import framework.AutomationAgent;
 import framework.Control;
+import framework.ControlType;
 
 public abstract class AbstractLoginpage{
-	protected Control usernameTextBox;
-	protected Control passwordTextBox;
-	protected Control loginButton;
+	protected Control usernameTextBox = new Control("Username TextBox", "username", ControlType.Textbox);
+	protected Control passwordTextBox = new Control("Password TextBox", "password", ControlType.Textbox);
+	protected Control loginButton= new Control("Login Button", "Login", ControlType.Button);;
 	protected AutomationAgent agent;
 	
 	public abstract void abstrMethod(String mystr);
@@ -24,7 +25,6 @@ public abstract class AbstractLoginpage{
 	public void Login(String username, String password){
 		enterUsername(username);
 		enterPassword(password);
-		enterUsername(username);
 		clickLoginButton();
 	}
 	
